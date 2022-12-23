@@ -11,7 +11,19 @@ import salesRoutes from './routes/sales.js';
 
 /* DATA IMPORTS */
 import User from './models/User.js';
-import { dataUser } from './data/index.js';
+import Product from './models/Product.js';
+import ProductStat from './models/ProductStat.js';
+import Transaction from './models/Transaction.js';
+import OverallStat from './models/OverallStat.js';
+import {
+  dataUser,
+  dataProduct,
+  dataProductStat,
+  dataTransaction,
+  dataOverallStat,
+  dataAffiliateStat,
+} from './data/index.js';
+import AffiliateStat from './models/AffiliateStat.js';
 
 dotenv.config();
 
@@ -40,6 +52,11 @@ mongoose.connect(conf.mongoUrl)
 .then(() => {
   app.listen(conf.port, () => console.log(`Server Port: ${conf.port}`));
   /* ONLY ADD DATA ONE TIME */
+  /*AffiliateStat.insertMany(dataAffiliateStat);*/
+  /*OverallStat.insertMany(dataOverallStat);*/
+  /*Product.insertMany(dataProduct);*/
+  /*ProductStat.insertMany(dataProductStat);*/
+  /*Transaction.insertMany(dataTransaction);*/
   /*User.insertMany(dataUser);*/
 })
   .catch((error) => console.error(`${error} did not connect`));
